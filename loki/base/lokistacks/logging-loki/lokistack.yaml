@@ -1,0 +1,34 @@
+apiVersion: loki.grafana.com/v1
+kind: LokiStack
+metadata:
+  name: logging-loki
+  namespace: openshift-logging
+spec:
+  limits:
+    global:
+      ingestion:
+        ingestionBurstSize: 10
+        ingestionRate: 10
+      retention:
+        days: 90
+    tenants:
+      audit:
+        retention:
+          days: 90
+      application:
+        retention:
+          days: 30
+      infrastructure:
+        retention:
+          days: 30
+  managementState: Managed
+  storage:
+    secret:
+      name: thanos-object-storage
+      type: s3
+    tls:
+      caName: openshift-service-ca.crt
+  tenants:
+    mode: openshift-logging
+  size: 1x.extra-small
+  storageClassName: ocs-storagecluster-ceph-rbd
