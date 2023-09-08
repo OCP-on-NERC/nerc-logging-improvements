@@ -1,7 +1,8 @@
 apiVersion: ocs.openshift.io/v1
 kind: StorageCluster
 metadata:  
-  name: ocs-external-storagecluster
+  name: ocs-storagecluster
+  namespace: openshift-storage
 spec:
   arbiter: {}
   encryption:

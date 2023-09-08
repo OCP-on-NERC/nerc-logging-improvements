@@ -3,7 +3,8 @@ kind: Kustomization
 resources:
   - backingstores/
   - bucketclasses/
-  - storageclasses
-  - objectbucketclaims/
+  - clusterrolebindings/
+  - clusterroles/
   - lokistacks/
-
+  - objectbucketclaims/
+  - storageclasses/

@@ -1,0 +1,169 @@
+apiVersion: ocs.openshift.io/v1
+kind: StorageCluster
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"ocs.openshift.io/v1","kind":"StorageCluster","metadata":{"annotations":{},"name":"ocs-storagecluster","namespace":"openshift-storage"},"spec":{"arbiter":{},"encryption":{"kms":{}},"externalStorage":{},"managedResources":{"cephBlockPools":{},"cephCluster":{},"cephConfig":{},"cephDashboard":{},"cephFilesystems":{},"cephObjectStoreUsers":{},"cephObjectStores":{}},"mirroring":{},"nodeTopologies":{},"storageDeviceSets":[{"config":{},"count":1,"dataPVCTemplate":{"metadata":{},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"512Gi"}},"storageClassName":"gp2","volumeMode":"Block"},"status":{}},"name":"ocs-deviceset-gp2","placement":{},"portable":true,"preparePlacement":{},"replica":3,"resources":{}}],"version":"4.10.0"}}
+    uninstall.ocs.openshift.io/cleanup-policy: delete
+    uninstall.ocs.openshift.io/mode: graceful
+  resourceVersion: '73052'
+  name: ocs-storagecluster
+  uid: 25445fa8-fe9c-42e1-9011-b12e7ef6f4db
+  creationTimestamp: '2023-09-05T17:23:42Z'
+  generation: 1
+  managedFields:
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+        'f:spec':
+          'f:nodeTopologies': {}
+          'f:version': {}
+          .: {}
+          'f:storageDeviceSets': {}
+          'f:mirroring': {}
+          'f:arbiter': {}
+          'f:encryption':
+            .: {}
+            'f:kms': {}
+          'f:managedResources':
+            .: {}
+            'f:cephBlockPools': {}
+            'f:cephCluster': {}
+            'f:cephConfig': {}
+            'f:cephDashboard': {}
+            'f:cephFilesystems': {}
+            'f:cephObjectStoreUsers': {}
+            'f:cephObjectStores': {}
+          'f:externalStorage': {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: '2023-09-05T17:23:42Z'
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:uninstall.ocs.openshift.io/cleanup-policy': {}
+            'f:uninstall.ocs.openshift.io/mode': {}
+          'f:finalizers':
+            .: {}
+            'v:"storagecluster.ocs.openshift.io"': {}
+      manager: ocs-operator
+      operation: Update
+      time: '2023-09-05T17:23:42Z'
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          .: {}
+          'f:conditions': {}
+          'f:externalStorage':
+            .: {}
+            'f:grantedCapacity': {}
+          'f:images':
+            .: {}
+            'f:ceph':
+              .: {}
+              'f:desiredImage': {}
+            'f:noobaaCore':
+              .: {}
+              'f:desiredImage': {}
+            'f:noobaaDB':
+              .: {}
+              'f:desiredImage': {}
+          'f:nodeTopologies': {}
+          'f:phase': {}
+      manager: ocs-operator
+      operation: Update
+      subresource: status
+      time: '2023-09-05T17:23:42Z'
+  namespace: openshift-storage
+  finalizers:
+    - storagecluster.ocs.openshift.io
+spec:
+  arbiter: {}
+  encryption:
+    kms: {}
+  externalStorage: {}
+  managedResources:
+    cephBlockPools: {}
+    cephCluster: {}
+    cephConfig: {}
+    cephDashboard: {}
+    cephFilesystems: {}
+    cephObjectStoreUsers: {}
+    cephObjectStores: {}
+  mirroring: {}
+  nodeTopologies: {}
+  storageDeviceSets:
+    - config: {}
+      resources: {}
+      placement: {}
+      name: ocs-deviceset-gp2
+      dataPVCTemplate:
+        metadata: {}
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 512Gi
+          storageClassName: gp2
+          volumeMode: Block
+        status: {}
+      count: 1
+      replica: 3
+      portable: true
+      preparePlacement: {}
+  version: 4.10.0
+status:
+  conditions:
+    - lastHeartbeatTime: '2023-09-05T17:26:26Z'
+      lastTransitionTime: '2023-09-05T17:23:42Z'
+      message: 'Error while reconciling: Not enough nodes found: Expected 3, found 0'
+      reason: ReconcileFailed
+      status: 'False'
+      type: ReconcileComplete
+    - lastHeartbeatTime: '2023-09-05T17:23:42Z'
+      lastTransitionTime: '2023-09-05T17:23:42Z'
+      message: Initializing StorageCluster
+      reason: Init
+      status: 'False'
+      type: Available
+    - lastHeartbeatTime: '2023-09-05T17:23:42Z'
+      lastTransitionTime: '2023-09-05T17:23:42Z'
+      message: Initializing StorageCluster
+      reason: Init
+      status: 'True'
+      type: Progressing
+    - lastHeartbeatTime: '2023-09-05T17:23:42Z'
+      lastTransitionTime: '2023-09-05T17:23:42Z'
+      message: Initializing StorageCluster
+      reason: Init
+      status: 'False'
+      type: Degraded
+    - lastHeartbeatTime: '2023-09-05T17:23:42Z'
+      lastTransitionTime: '2023-09-05T17:23:42Z'
+      message: Initializing StorageCluster
+      reason: Init
+      status: Unknown
+      type: Upgradeable
+  externalStorage:
+    grantedCapacity: '0'
+  images:
+    ceph:
+      desiredImage: >-
+        registry.redhat.io/rhceph/rhceph-5-rhel8@sha256:fc25524ccb0ea78526257778ab54bfb1a25772b75fcc97df98eb06a0e67e1bf6
+    noobaaCore:
+      desiredImage: >-
+        registry.redhat.io/odf4/mcg-core-rhel8@sha256:09ff291587e3ea37ddcc18fe97c1ac9d457ee2744a2542e1c2ecf23f7e7ef92e
+    noobaaDB:
+      desiredImage: >-
+        registry.redhat.io/rhel8/postgresql-12@sha256:88db479f10b2acc7b797a788fd29d7827376e3f4458455e15be012ea69c3cf97
+  nodeTopologies: {}
+  phase: Error
+

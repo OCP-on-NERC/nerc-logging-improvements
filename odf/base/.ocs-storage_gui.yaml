@@ -1,0 +1,214 @@
+apiVersion: ocs.openshift.io/v1
+kind: StorageCluster
+metadata:
+  annotations:
+    uninstall.ocs.openshift.io/cleanup-policy: delete
+    uninstall.ocs.openshift.io/mode: graceful
+  resourceVersion: '94214'
+  name: ocs-storagecluster
+  uid: 372ec8d2-ceb1-4cca-b47e-44fb95a08cfe
+  creationTimestamp: '2023-09-05T17:30:15Z'
+  generation: 2
+  managedFields:
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          .: {}
+          'f:arbiter': {}
+          'f:encryption':
+            .: {}
+            'f:kms': {}
+          'f:nodeTopologies': {}
+      manager: Mozilla
+      operation: Update
+      time: '2023-09-05T17:30:15Z'
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"c3f45ccc-a478-464b-93a9-9cf070faf763"}': {}
+      manager: manager
+      operation: Update
+      time: '2023-09-05T17:30:15Z'
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          .: {}
+          'f:externalStorage':
+            .: {}
+            'f:grantedCapacity': {}
+          'f:images':
+            .: {}
+            'f:ceph':
+              .: {}
+              'f:desiredImage': {}
+            'f:noobaaCore':
+              .: {}
+              'f:desiredImage': {}
+            'f:noobaaDB':
+              .: {}
+              'f:desiredImage': {}
+      manager: ocs-operator
+      operation: Update
+      time: '2023-09-05T17:30:15Z'
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:conditions': {}
+          'f:failureDomain': {}
+          'f:failureDomainKey': {}
+          'f:failureDomainValues': {}
+          'f:images':
+            'f:ceph':
+              'f:actualImage': {}
+            'f:noobaaCore':
+              'f:actualImage': {}
+            'f:noobaaDB':
+              'f:actualImage': {}
+          'f:nodeTopologies':
+            .: {}
+            'f:labels':
+              .: {}
+              'f:failure-domain.beta.kubernetes.io/region': {}
+              'f:failure-domain.beta.kubernetes.io/zone': {}
+              'f:kubernetes.io/hostname': {}
+              'f:topology.rook.io/rack': {}
+          'f:phase': {}
+          'f:relatedObjects': {}
+      manager: ocs-operator
+      operation: Update
+      subresource: status
+      time: '2023-09-05T17:35:53Z'
+  namespace: openshift-storage
+  ownerReferences:
+    - apiVersion: odf.openshift.io/v1alpha1
+      kind: StorageSystem
+      name: ocs-storagecluster-storagesystem
+      uid: c3f45ccc-a478-464b-93a9-9cf070faf763
+  finalizers:
+    - storagecluster.ocs.openshift.io
+spec:
+  arbiter: {}
+  encryption:
+    kms: {}
+  externalStorage: {}
+  managedResources:
+    cephBlockPools: {}
+    cephCluster: {}
+    cephConfig: {}
+    cephDashboard: {}
+    cephFilesystems: {}
+    cephObjectStoreUsers: {}
+    cephObjectStores: {}
+  mirroring: {}
+  nodeTopologies: {}
+  storageDeviceSets:
+    - config: {}
+      resources: {}
+      placement: {}
+      name: ocs-deviceset-gp2
+      dataPVCTemplate:
+        metadata: {}
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 512Gi
+          storageClassName: gp2
+          volumeMode: Block
+        status: {}
+      count: 1
+      replica: 3
+      portable: true
+      preparePlacement: {}
+  version: 4.10.0
+status:
+  relatedObjects:
+    - apiVersion: ceph.rook.io/v1
+      kind: CephCluster
+      name: ocs-storagecluster-cephcluster
+      namespace: openshift-storage
+      resourceVersion: '93916'
+      uid: 89c09bb4-1709-497a-a7a9-6c89f450e8a5
+    - apiVersion: noobaa.io/v1alpha1
+      kind: NooBaa
+      name: noobaa
+      namespace: openshift-storage
+      resourceVersion: '94211'
+      uid: 4d6f12f1-7e14-4ffe-baed-57b610a9a6a8
+  failureDomain: rack
+  nodeTopologies:
+    labels:
+      failure-domain.beta.kubernetes.io/region:
+        - us-east-2
+      failure-domain.beta.kubernetes.io/zone:
+        - us-east-2b
+      kubernetes.io/hostname:
+        - ip-10-0-150-182.us-east-2.compute.internal
+        - ip-10-0-224-140.us-east-2.compute.internal
+        - ip-10-0-243-90.us-east-2.compute.internal
+      topology.rook.io/rack:
+        - rack1
+        - rack2
+        - rack0
+  externalStorage:
+    grantedCapacity: '0'
+  failureDomainValues:
+    - rack1
+    - rack2
+    - rack0
+  failureDomainKey: topology.rook.io/rack
+  images:
+    ceph:
+      actualImage: >-
+        registry.redhat.io/rhceph/rhceph-5-rhel8@sha256:fc25524ccb0ea78526257778ab54bfb1a25772b75fcc97df98eb06a0e67e1bf6
+      desiredImage: >-
+        registry.redhat.io/rhceph/rhceph-5-rhel8@sha256:fc25524ccb0ea78526257778ab54bfb1a25772b75fcc97df98eb06a0e67e1bf6
+    noobaaCore:
+      actualImage: >-
+        registry.redhat.io/odf4/mcg-core-rhel8@sha256:09ff291587e3ea37ddcc18fe97c1ac9d457ee2744a2542e1c2ecf23f7e7ef92e
+      desiredImage: >-
+        registry.redhat.io/odf4/mcg-core-rhel8@sha256:09ff291587e3ea37ddcc18fe97c1ac9d457ee2744a2542e1c2ecf23f7e7ef92e
+    noobaaDB:
+      actualImage: >-
+        registry.redhat.io/rhel8/postgresql-12@sha256:88db479f10b2acc7b797a788fd29d7827376e3f4458455e15be012ea69c3cf97
+      desiredImage: >-
+        registry.redhat.io/rhel8/postgresql-12@sha256:88db479f10b2acc7b797a788fd29d7827376e3f4458455e15be012ea69c3cf97
+  conditions:
+    - lastHeartbeatTime: '2023-09-05T17:38:06Z'
+      lastTransitionTime: '2023-09-05T17:35:53Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'True'
+      type: ReconcileComplete
+    - lastHeartbeatTime: '2023-09-05T17:38:06Z'
+      lastTransitionTime: '2023-09-05T17:37:40Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'True'
+      type: Available
+    - lastHeartbeatTime: '2023-09-05T17:38:06Z'
+      lastTransitionTime: '2023-09-05T17:37:40Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'False'
+      type: Progressing
+    - lastHeartbeatTime: '2023-09-05T17:38:06Z'
+      lastTransitionTime: '2023-09-05T17:30:15Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'False'
+      type: Degraded
+    - lastHeartbeatTime: '2023-09-05T17:38:06Z'
+      lastTransitionTime: '2023-09-05T17:37:40Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'True'
+      type: Upgradeable
+  phase: Ready
