@@ -23,7 +23,7 @@ Depending on what the team descides is the best method for the researchers
 and data privacy concerns, will likely impact the decision of how the logs
 are to be stored and transfered. If for example, the team descides to go 
 with .csv files, the logs could be aggrigated into individual files by
-date and node and stored in archivel storage until requested. If this is 
+date and node and stored in archival storage until requested. If this is 
 the case then storing the logs in a compressed lossless format could allow 
 them fairly grainular control over which logs they are retrieving, which 
 would could reduce CPU time on the stored machine. This does have some
@@ -33,3 +33,36 @@ which log levels they were looking at, that would need to be parced between
 the decompression and presentation of the logs. The downside to this is it 
 could increase the amount of requests being made to the server if they arnt
 getting the exact logs they thought they were looking for.
+
+Space requirements for archival storage: based on the current usage of the 
+cluster, as addressed by [computate and larsks](https://github.com/nerc-project/operations/issues/240)
+we will need about 50TB of CEPH storage per year at the current usage rates.
+The prod system shouldn't need any more than it currently has as storage 
+should be cleared once we can confirm the receipt of the archives.
+
+At this time I believe setting up a cronjob on the cluster to move the logs
+over will be an effective solution. Depending on the needs of the
+researchers, the logs could be moved over hourly, daily, or weekly. It
+seems to me that more frequently would be the better of the two unless we
+have some reason we can't do that for CPU or networking constraints. Doing
+more frequent 'backups' will reduce the size of the package over the wire,
+and help prevent any issues.
+
+It's my understanding that the the AWS cli tool and MC cli tool could both
+be used for this. The issues the we are currently experienceing with them,
+is likely do to the size of the transfers causing a timeout of the network
+connection. Shorter, more frequent updates should mitigate this risk.
+However, that doesn't solve the problem of transfering over the data 
+currently stored on the cluster. One not great solution would be to just
+ignore that data and start transfering the current logs. Although the 
+researchers would lose the data that has already been aggrigated. On the 
+other hand, they have already lost all the data that has been dumped over
+time anyways.
+
+uses should be able to access the last month of their logs. and the archived logs. the user dont have access to the vpn/firewall so how can they retreive those logs?
+
+are infra logs just openshift-[namespace]?
+do they need just their pod logs?
+do they need all openshift infra logs?
+what do admin need access to?
+
